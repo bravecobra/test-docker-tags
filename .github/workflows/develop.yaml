@@ -39,8 +39,8 @@ jobs:
           flavor: |
             latest=false
           tags: |
-            type=raw,enable=${{ github.ref == 'refs/heads/develop') }},value=latest
-            type=raw,enable=${{ github.ref == 'refs/heads/master') }},value=stable
+            type=raw,enable=${{ github.ref == 'refs/heads/develop' }},value=latest
+            type=raw,enable=${{ github.ref == 'refs/heads/master' }},value=stable
             type=semver,pattern={{version}},value=${{ steps.gitversion.outputs.semVer }}
       # -
       #   name: Login to DockerHub
