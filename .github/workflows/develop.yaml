@@ -36,9 +36,11 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: name/app
+          flavor: |
+            latest=false
           tags: |
-            type=edge,branch=develop,version=latest
-            type=edge,branch=master,version=stable
+            type=ref,event=branch,branch=develop,value=latest
+            type=ref,event=branch,branch=master,value=stable
             type=semver,pattern={{version}},value=${{ steps.gitversion.outputs.semVer }}
       # -
       #   name: Login to DockerHub
