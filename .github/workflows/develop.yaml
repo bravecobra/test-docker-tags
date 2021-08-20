@@ -36,6 +36,10 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: name/app
+          tags: |
+            type=edge,branch=develop,version=latest
+            type=edge,branch=master,version=stable
+            type=semver,pattern={{version}},value=${{ steps.gitversion.outputs.semVer }}
       # -
       #   name: Login to DockerHub
       #   if: github.event_name != 'pull_request'
